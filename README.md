@@ -46,8 +46,18 @@ cd Desafio_AmbevTech
   "DefaultConnection": "Server=localhost;Database=DesafioAmbevTech;User Id=sa;Password=SuaSenha123;"
 }
 ```
+3. Configurar JWT em `appsettings.json`:
 
-3. Executar migrations e iniciar API:
+```json
+"Jwt": {
+    "Key": "troque_essa_chave_por_uma_muito_segura_e_longa",
+    "Issuer": "Desafio_AmbevTech",
+    "Audience": "Desafio_AmbevTechUsers",
+    "ExpiresMinutes": 60
+}
+```
+
+4. Executar migrations e iniciar API:
 
 ```bash
 cd src/Desafio.Api
@@ -55,13 +65,13 @@ dotnet ef database update
 dotnet run
 ```
 
-4. Acessar Swagger:
+5. Acessar Swagger:
 
 ```text
 https://localhost:5001/swagger/index.html
 ```
 
-5. Usuário Seed:
+6. Usuário Seed:
 
 ```
 Username: admin
