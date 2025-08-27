@@ -273,3 +273,124 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2025-08-26 22:35:53.111 -03:00 [INF] AuthenticationScheme: Bearer was challenged.
 2025-08-26 22:35:53.111 -03:00 [INF] HTTP GET /api/v1/Sales responded 401 in 4.4991 ms
 2025-08-26 22:35:53.113 -03:00 [INF] Request finished HTTP/2 GET https://localhost:44374/api/v1/Sales - 401 null null 6.9946ms
+2025-08-26 23:13:27.676 -03:00 [INF] Executed DbCommand (1,086ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-08-26 23:13:31.725 -03:00 [INF] Executed DbCommand (3,354ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2025-08-26 23:13:32.360 -03:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-08-26 23:13:33.018 -03:00 [INF] Starting web host
+2025-08-26 23:13:33.083 -03:00 [INF] User profile is available. Using 'C:\Users\mauri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-26 23:13:33.690 -03:00 [INF] Request starting HTTP/2 GET https://localhost:44374/swagger/index.html - null null
+2025-08-26 23:13:33.901 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-26 23:13:33.902 -03:00 [INF] Hosting environment: Development
+2025-08-26 23:13:33.903 -03:00 [INF] Content root path: C:\Projetos\.NET\Desafio_AmbevTech\src\Desafio.Api
+2025-08-26 23:13:34.379 -03:00 [INF] Request finished HTTP/2 GET https://localhost:44374/swagger/index.html - 200 null text/html;charset=utf-8 707.2423ms
+2025-08-26 23:13:34.562 -03:00 [INF] Request starting HTTP/2 GET https://localhost:44374/_vs/browserLink - null null
+2025-08-26 23:13:34.562 -03:00 [INF] Request starting HTTP/2 GET https://localhost:44374/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-26 23:13:34.570 -03:00 [INF] Request finished HTTP/2 GET https://localhost:44374/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 6.5367ms
+2025-08-26 23:13:34.661 -03:00 [INF] Request finished HTTP/2 GET https://localhost:44374/_vs/browserLink - 200 null text/javascript; charset=UTF-8 99.8209ms
+2025-08-26 23:13:35.029 -03:00 [INF] Request starting HTTP/2 GET https://localhost:44374/swagger/v1/swagger.json - null null
+2025-08-26 23:13:35.061 -03:00 [INF] Request finished HTTP/2 GET https://localhost:44374/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 31.8263ms
+2025-08-26 23:14:32.661 -03:00 [INF] Request starting HTTP/2 POST https://localhost:44374/api/v1/Auth/login - application/json 52
+2025-08-26 23:14:32.777 -03:00 [INF] Executing endpoint 'Desafio.Api.Controllers.AuthController.Login (Desafio.Api)'
+2025-08-26 23:14:32.806 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(Desafio.Application.DTOs.LoginDto) on controller Desafio.Api.Controllers.AuthController (Desafio.Api).
+2025-08-26 23:14:33.077 -03:00 [INF] Executed DbCommand (46ms) [Parameters=[@__dto_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__dto_Username_0
+2025-08-26 23:14:33.189 -03:00 [INF] Executing OkObjectResult, writing value of type 'Desafio.Application.DTOs.LoginResponseDto'.
+2025-08-26 23:14:33.194 -03:00 [INF] Executed action Desafio.Api.Controllers.AuthController.Login (Desafio.Api) in 384.4328ms
+2025-08-26 23:14:33.195 -03:00 [INF] Executed endpoint 'Desafio.Api.Controllers.AuthController.Login (Desafio.Api)'
+2025-08-26 23:14:33.197 -03:00 [INF] HTTP POST /api/v1/Auth/login responded 200 in 507.1128 ms
+2025-08-26 23:14:33.205 -03:00 [INF] Request finished HTTP/2 POST https://localhost:44374/api/v1/Auth/login - 200 null application/json; charset=utf-8 544.3881ms
+2025-08-26 23:16:01.783 -03:00 [INF] Request starting HTTP/2 POST https://localhost:44374/api/v1/Sales - application/json 392
+2025-08-26 23:16:01.810 -03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-08-26 23:16:01.814 -03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-08-26 23:16:01.815 -03:00 [INF] HTTP POST /api/v1/Sales responded 401 in 25.6504 ms
+2025-08-26 23:16:01.817 -03:00 [INF] Request finished HTTP/2 POST https://localhost:44374/api/v1/Sales - 401 null null 40.7443ms
+2025-08-26 23:16:42.678 -03:00 [INF] Request starting HTTP/2 POST https://localhost:44374/api/v1/Sales - application/json 392
+2025-08-26 23:16:42.803 -03:00 [INF] Executing endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:16:42.819 -03:00 [INF] Route matched with {action = "Create", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Desafio.Application.DTOs.SaleDto]] Create(Desafio.Application.DTOs.SaleCreateDto) on controller Desafio.Api.Controllers.SalesController (Desafio.Api).
+2025-08-26 23:16:42.862 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-08-26 23:16:42.907 -03:00 [INF] Executed action Desafio.Api.Controllers.SalesController.Create (Desafio.Api) in 87.1057ms
+2025-08-26 23:16:42.907 -03:00 [INF] Executed endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:16:42.907 -03:00 [INF] HTTP POST /api/v1/Sales responded 400 in 227.5322 ms
+2025-08-26 23:16:42.907 -03:00 [INF] Request finished HTTP/2 POST https://localhost:44374/api/v1/Sales - 400 null application/problem+json; charset=utf-8 229.4425ms
+2025-08-26 23:22:05.443 -03:00 [INF] Request starting HTTP/2 POST https://localhost:44374/api/v1/Sales - application/json 491
+2025-08-26 23:22:05.449 -03:00 [INF] Executing endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:22:05.449 -03:00 [INF] Route matched with {action = "Create", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Desafio.Application.DTOs.SaleDto]] Create(Desafio.Application.DTOs.SaleCreateDto) on controller Desafio.Api.Controllers.SalesController (Desafio.Api).
+2025-08-26 23:22:05.466 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-08-26 23:22:05.467 -03:00 [INF] Executed action Desafio.Api.Controllers.SalesController.Create (Desafio.Api) in 17.1326ms
+2025-08-26 23:22:05.467 -03:00 [INF] Executed endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:22:05.467 -03:00 [INF] HTTP POST /api/v1/Sales responded 400 in 23.5608 ms
+2025-08-26 23:22:05.468 -03:00 [INF] Request finished HTTP/2 POST https://localhost:44374/api/v1/Sales - 400 null application/problem+json; charset=utf-8 25.2565ms
+2025-08-26 23:22:18.135 -03:00 [INF] Request starting HTTP/2 POST https://localhost:44374/api/v1/Sales - application/json 491
+2025-08-26 23:22:18.137 -03:00 [INF] Executing endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:22:18.137 -03:00 [INF] Route matched with {action = "Create", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Desafio.Application.DTOs.SaleDto]] Create(Desafio.Application.DTOs.SaleCreateDto) on controller Desafio.Api.Controllers.SalesController (Desafio.Api).
+2025-08-26 23:22:18.144 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-08-26 23:22:18.145 -03:00 [INF] Executed action Desafio.Api.Controllers.SalesController.Create (Desafio.Api) in 7.6383ms
+2025-08-26 23:22:18.146 -03:00 [INF] Executed endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:22:18.146 -03:00 [INF] HTTP POST /api/v1/Sales responded 400 in 10.4617 ms
+2025-08-26 23:22:18.148 -03:00 [INF] Request finished HTTP/2 POST https://localhost:44374/api/v1/Sales - 400 null application/problem+json; charset=utf-8 13.1135ms
+2025-08-26 23:27:04.338 -03:00 [INF] Request starting HTTP/2 POST https://localhost:44374/api/v1/Sales - application/json 397
+2025-08-26 23:27:04.344 -03:00 [INF] Executing endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:27:04.345 -03:00 [INF] Route matched with {action = "Create", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Desafio.Application.DTOs.SaleDto]] Create(Desafio.Application.DTOs.SaleCreateDto) on controller Desafio.Api.Controllers.SalesController (Desafio.Api).
+2025-08-26 23:27:04.349 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-08-26 23:27:04.352 -03:00 [INF] Executed action Desafio.Api.Controllers.SalesController.Create (Desafio.Api) in 6.151ms
+2025-08-26 23:27:04.352 -03:00 [INF] Executed endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:27:04.352 -03:00 [INF] HTTP POST /api/v1/Sales responded 400 in 10.1616 ms
+2025-08-26 23:27:04.353 -03:00 [INF] Request finished HTTP/2 POST https://localhost:44374/api/v1/Sales - 400 null application/problem+json; charset=utf-8 14.6537ms
+2025-08-26 23:28:13.305 -03:00 [INF] Request starting HTTP/2 POST https://localhost:44374/api/v1/Sales - application/json 393
+2025-08-26 23:28:13.310 -03:00 [INF] Executing endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:28:13.311 -03:00 [INF] Route matched with {action = "Create", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Desafio.Application.DTOs.SaleDto]] Create(Desafio.Application.DTOs.SaleCreateDto) on controller Desafio.Api.Controllers.SalesController (Desafio.Api).
+2025-08-26 23:28:13.371 -03:00 [INF] Evento de domínio disparado: CompraCriada em "2025-08-27T02:28:13.3697881Z" | Detalhes: {"Sale":{"Id":"9932f653-4614-461a-91ec-b6fec06d1802","SaleNumber":"V001","Date":"2025-08-27T02:28:13.3693669Z","CustomerId":"11111111-1111-1111-1111-111111111111","BranchId":"22222222-2222-2222-2222-222222222222","Cancelled":false,"Items":[],"Total":0,"$type":"Sale"},"EventName":"CompraCriada","OccurredOn":"2025-08-27T02:28:13.3697881Z","$type":"SaleCreatedEvent"}
+2025-08-26 23:28:13.387 -03:00 [INF] Evento de domínio disparado: ItemAdicionado em "2025-08-27T02:28:13.3870945Z" | Detalhes: {"Sale":{"Id":"9932f653-4614-461a-91ec-b6fec06d1802","SaleNumber":"V001","Date":"2025-08-27T02:28:13.3693669Z","CustomerId":"11111111-1111-1111-1111-111111111111","BranchId":"22222222-2222-2222-2222-222222222222","Cancelled":false,"Items":[{"Id":"80f3e485-a7b4-408d-a6a5-e725d99131ec","ProductId":"33333333-3333-3333-3333-333333333333","Quantity":5,"UnitPrice":100.00,"DiscountPercent":0.10,"Total":450.0000,"$type":"SaleItem"}],"Total":450.0000,"$type":"Sale"},"Item":{"Id":"80f3e485-a7b4-408d-a6a5-e725d99131ec","ProductId":"33333333-3333-3333-3333-333333333333","Quantity":5,"UnitPrice":100.00,"DiscountPercent":0.10,"Total":450.0000,"$type":"SaleItem"},"EventName":"ItemAdicionado","OccurredOn":"2025-08-27T02:28:13.3870945Z","$type":"SaleItemAddedEvent"}
+2025-08-26 23:28:13.393 -03:00 [INF] Evento de domínio disparado: ItemAdicionado em "2025-08-27T02:28:13.3932866Z" | Detalhes: {"Sale":{"Id":"9932f653-4614-461a-91ec-b6fec06d1802","SaleNumber":"V001","Date":"2025-08-27T02:28:13.3693669Z","CustomerId":"11111111-1111-1111-1111-111111111111","BranchId":"22222222-2222-2222-2222-222222222222","Cancelled":false,"Items":[{"Id":"80f3e485-a7b4-408d-a6a5-e725d99131ec","ProductId":"33333333-3333-3333-3333-333333333333","Quantity":5,"UnitPrice":100.00,"DiscountPercent":0.10,"Total":450.0000,"$type":"SaleItem"},{"Id":"1ac68603-ebaf-4b78-910d-5aee9f147e97","ProductId":"44444444-4444-4444-4444-444444444444","Quantity":12,"UnitPrice":50.00,"DiscountPercent":0.20,"Total":480.0000,"$type":"SaleItem"}],"Total":930.0000,"$type":"Sale"},"Item":{"Id":"1ac68603-ebaf-4b78-910d-5aee9f147e97","ProductId":"44444444-4444-4444-4444-444444444444","Quantity":12,"UnitPrice":50.00,"DiscountPercent":0.20,"Total":480.0000,"$type":"SaleItem"},"EventName":"ItemAdicionado","OccurredOn":"2025-08-27T02:28:13.3932866Z","$type":"SaleItemAddedEvent"}
+2025-08-26 23:28:13.865 -03:00 [INF] Executed DbCommand (123ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Boolean), @p3='?' (DbType = Guid), @p4='?' (DbType = DateTime2), @p5='?' (Size = 20), @p6='?' (DbType = Guid), @p7='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p8='?' (DbType = Guid), @p9='?' (DbType = Int32), @p10='?' (DbType = Guid), @p11='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p12='?' (DbType = Guid), @p13='?' (Precision = 5) (Scale = 2) (DbType = Decimal), @p14='?' (DbType = Guid), @p15='?' (DbType = Int32), @p16='?' (DbType = Guid), @p17='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Sales] ([Id], [BranchId], [Cancelled], [CustomerId], [Date], [SaleNumber])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+INSERT INTO [SaleItems] ([Id], [DiscountPercent], [ProductId], [Quantity], [SaleId], [UnitPrice])
+VALUES (@p6, @p7, @p8, @p9, @p10, @p11),
+(@p12, @p13, @p14, @p15, @p16, @p17);
+2025-08-26 23:28:13.898 -03:00 [INF] Venda criada via API: "9932f653-4614-461a-91ec-b6fec06d1802", itens adicionados: 2
+2025-08-26 23:28:13.903 -03:00 [INF] Executing CreatedAtActionResult, writing value of type 'Desafio.Application.DTOs.SaleDto'.
+2025-08-26 23:28:13.944 -03:00 [INF] Executed action Desafio.Api.Controllers.SalesController.Create (Desafio.Api) in 632.4358ms
+2025-08-26 23:28:13.944 -03:00 [INF] Executed endpoint 'Desafio.Api.Controllers.SalesController.Create (Desafio.Api)'
+2025-08-26 23:28:13.946 -03:00 [INF] HTTP POST /api/v1/Sales responded 201 in 639.4821 ms
+2025-08-26 23:28:13.947 -03:00 [INF] Request finished HTTP/2 POST https://localhost:44374/api/v1/Sales - 201 null application/json; charset=utf-8 642.767ms
+2025-08-26 23:29:41.049 -03:00 [INF] Request starting HTTP/2 GET https://localhost:44374/api/v1/Sales - null null
+2025-08-26 23:29:41.058 -03:00 [INF] Executing endpoint 'Desafio.Api.Controllers.SalesController.GetAll (Desafio.Api)'
+2025-08-26 23:29:41.073 -03:00 [INF] Route matched with {action = "GetAll", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[Desafio.Application.DTOs.SaleDto]]] GetAll() on controller Desafio.Api.Controllers.SalesController (Desafio.Api).
+2025-08-26 23:29:41.339 -03:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[BranchId], [s].[Cancelled], [s].[CustomerId], [s].[Date], [s].[SaleNumber], [s0].[Id], [s0].[DiscountPercent], [s0].[ProductId], [s0].[Quantity], [s0].[SaleId], [s0].[UnitPrice]
+FROM [Sales] AS [s]
+LEFT JOIN [SaleItems] AS [s0] ON [s].[Id] = [s0].[SaleId]
+ORDER BY [s].[Id]
+2025-08-26 23:29:41.353 -03:00 [INF] Evento de domínio disparado: CompraCriada em "2025-08-27T02:29:41.3537874Z" | Detalhes: {"Sale":{"Id":"195baa10-6fcb-4fd4-ae9c-54a724b31160","SaleNumber":"V001","Date":"2025-08-27T02:29:41.3537849Z","CustomerId":"11111111-1111-1111-1111-111111111111","BranchId":"22222222-2222-2222-2222-222222222222","Cancelled":false,"Items":[],"Total":0,"$type":"Sale"},"EventName":"CompraCriada","OccurredOn":"2025-08-27T02:29:41.3537874Z","$type":"SaleCreatedEvent"}
+2025-08-26 23:29:41.375 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[Desafio.Domain.Entities.Sale, Desafio.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Desafio.Application.DTOs.SaleDto, Desafio.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-26 23:29:41.378 -03:00 [INF] Executed action Desafio.Api.Controllers.SalesController.GetAll (Desafio.Api) in 305.1447ms
+2025-08-26 23:29:41.379 -03:00 [INF] Executed endpoint 'Desafio.Api.Controllers.SalesController.GetAll (Desafio.Api)'
+2025-08-26 23:29:41.379 -03:00 [INF] HTTP GET /api/v1/Sales responded 200 in 326.0463 ms
+2025-08-26 23:29:41.379 -03:00 [INF] Request finished HTTP/2 GET https://localhost:44374/api/v1/Sales - 200 null application/json; charset=utf-8 330.4267ms
