@@ -86,7 +86,7 @@ Password: Teste@123
 
 Você pode baixar o projeto completo diretamente do GitHub:
 
-[Desafio_AmbevTech - GitHub](https://github.com/seu-usuario/Desafio_AmbevTech)
+[Desafio_AmbevTech - GitHub](https://github.com/mauridf/Desafio_AmbevTech)
 
 - Clone ou baixe o ZIP.
 - Siga os passos acima para configuração e execução local.
