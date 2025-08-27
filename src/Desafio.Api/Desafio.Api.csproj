@@ -20,10 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Desafio.Application\Desafio.Application.csproj" />
     <ProjectReference Include="..\Desafio.Data\Desafio.Data.csproj" />
   </ItemGroup>
