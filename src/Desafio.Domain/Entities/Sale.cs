@@ -26,6 +26,7 @@ namespace Desafio.Domain.Entities
         {
             var item = new SaleItem(productId, quantity, unitPrice);
             _items.Add(item);
+            EventDispatcher.Dispatch(new SaleItemAddedEvent(this, item));
         }
 
         public void Cancel()
