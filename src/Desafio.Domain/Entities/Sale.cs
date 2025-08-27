@@ -34,5 +34,14 @@ namespace Desafio.Domain.Entities
             Cancelled = true;
             EventDispatcher.Dispatch(new SaleCancelledEvent(this));
         }
+
+        public void ClearItems()
+        {
+            foreach (var item in _items)
+            {
+                item.Cancel();
+            }
+            _items.Clear();
+        }
     }
 }
