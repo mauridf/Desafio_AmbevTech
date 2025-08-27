@@ -1,4 +1,6 @@
-﻿namespace Desafio.Domain.Entities
+﻿using Desafio.Domain.Events;
+
+namespace Desafio.Domain.Entities
 {
     public class SaleItem
     {
@@ -33,6 +35,11 @@
             var subtotal = UnitPrice * Quantity;
             var discount = subtotal * DiscountPercent;
             return subtotal - discount;
+        }
+
+        public void Cancel()
+        {
+            EventDispatcher.Dispatch(new SaleItemCancelledEvent(Id));
         }
     }
 

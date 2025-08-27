@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Desafio.Domain.Events;
 
 namespace Desafio.Domain.Entities
 {
@@ -20,6 +19,7 @@ namespace Desafio.Domain.Entities
             SaleNumber = saleNumber ?? throw new ArgumentNullException(nameof(saleNumber));
             CustomerId = customerId;
             BranchId = branchId;
+            EventDispatcher.Dispatch(new SaleCreatedEvent(this));
         }
 
         public void AddItem(Guid productId, int quantity, decimal unitPrice)
@@ -31,6 +31,7 @@ namespace Desafio.Domain.Entities
         public void Cancel()
         {
             Cancelled = true;
+            EventDispatcher.Dispatch(new SaleCancelledEvent(this));
         }
     }
 }
