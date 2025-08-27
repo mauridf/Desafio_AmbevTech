@@ -1,0 +1,62 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build Folders
+bin/
+obj/
+out/
+
+# NuGet
+*.nupkg
+packages/
+# Uncomment if you have a package restore step
+# .nuget/
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# VS Code
+.vscode/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Rider
+.idea/
+
+# DotCover
+*.dotCover
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Files built by Visual Studio
+*.exe
+*.dll
+*.pdb
+*.cache
+*.ilk
+*.meta
+*.obj
+*.log
+*.tlog
+*.lastbuildstate
+
+# Others
+*.vsix
+TestResults/
+*.dbmdl
+*.bak
+*.backup
+*.ndb
+*.opendb
+*.jfm
