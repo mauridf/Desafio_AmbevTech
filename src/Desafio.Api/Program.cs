@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Desafio.Data;
 using Desafio.Data.Repositories;
+using Desafio.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -52,6 +53,20 @@ builder.Services.AddAuthentication(options =>
 });
 
 var app = builder.Build();
+
+// Seed de usuário (para testes)
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<DefaultContext>();
+    context.Database.EnsureCreated();
+
+    if (!context.Users.Any())
+    {
+        var admin = new User("admin", User.HashPassword("Teste@123"), "Admin");
+        context.Users.Add(admin);
+        context.SaveChanges();
+    }
+}
 
 if (app.Environment.IsDevelopment())
 {

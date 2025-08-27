@@ -3,9 +3,11 @@ using Desafio.Data.Repositories;
 using Desafio.Application.DTOs;
 using Desafio.Application.Mappers;
 using Desafio.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Desafio.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
     public class SalesController : ControllerBase
