@@ -2,8 +2,17 @@ using Serilog;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Desafio.Data;
+using Desafio.Data.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<DefaultContext>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<ISaleRepository, SaleRepository>();
 
 // Serilog
 Log.Logger = new LoggerConfiguration()
